@@ -1,0 +1,32 @@
+# Ejercicios frontend (una carpeta por ejercicio)
+
+1. ejercicio-01-tabla-grande/
+	- ejercicio-01-tabla-grande.tsx
+	- ejercicio-01-tabla-grande.css
+2. ejercicio-02-tipado-detalle/
+	- ejercicio-02-tipado-detalle.tsx
+	- ejercicio-02-tipado-detalle.css
+3. ejercicio-03-hook-carga-estados/
+	- ejercicio-03-hook-carga-estados.ts
+	- ejercicio-03-hook-carga-estados.css
+4. ejercicio-04-hook-filtros/
+	- ejercicio-04-hook-filtros.ts
+	- ejercicio-04-hook-filtros.css
+5. ejercicio-05-modulo-api/
+	- ejercicio-05-modulo-api.ts
+	- ejercicio-05-modulo-api.css
+6. ejercicio-06-formulario/
+	- ejercicio-06-formulario.tsx
+	- ejercicio-06-formulario.css
+7. ejercicio-07-badges-rol/
+	- ejercicio-07-badges-rol.tsx
+	- ejercicio-07-badges-rol.css
+8. ejercicio-08-detalle-contexto/
+	- ejercicio-08-detalle-contexto.tsx
+	- ejercicio-08-detalle-contexto.css
+9. ejercicio-09-dashboard-transformaciones/
+	- ejercicio-09-dashboard-transformaciones.tsx
+	- ejercicio-09-dashboard-transformaciones.css
+10. ejercicio-10-editor-branching/
+	- ejercicio-10-editor-branching.tsx
+	- ejercicio-10-editor-branching.css
