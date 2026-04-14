@@ -1,9 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import Laborer from './Laborers.tsx'
+import { AppRouter } from './services/routes.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Laborer />
+    <AppRouter>
+    </AppRouter>
   </StrictMode>,
 )

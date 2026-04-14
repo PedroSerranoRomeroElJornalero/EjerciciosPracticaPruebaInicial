@@ -1,22 +1,15 @@
-import { createContext, ReactNode,  } from 'react';
+import { createContext, ReactNode } from 'react';
+import useLaborerData from './services/useLaborerData';
 
-export const DataContext = createContext({});
+export type DataContextType = ReturnType<typeof useLaborerData>;
 
-export const DataProvider = ({ children,laborer }:{
-    children:ReactNode,
-    laborer:{
-        id:number,
-        picture:string,
-        firstName:string,
-        lastName:string,
-        email:string,
-        role:string,
-        hireDate:string,
-    }
-}) => {
+export const DataContext = createContext<DataContextType | undefined>(undefined);
+
+export const DataProvider = ({ children }: { children: ReactNode }) => {
+  const laborerData = useLaborerData();
 
   return (
-    <DataContext.Provider value={{ laborer }}>
+    <DataContext.Provider value={laborerData}>
       {children}
     </DataContext.Provider>
   );
