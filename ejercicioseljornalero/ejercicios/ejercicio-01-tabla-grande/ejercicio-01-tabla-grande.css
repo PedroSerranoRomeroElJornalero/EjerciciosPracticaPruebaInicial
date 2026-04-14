@@ -1,0 +1,11 @@
+.roleColor.admin{
+    color: "red"
+}
+
+.roleColor.manager{
+    color: "blue"
+}
+
+.roleColor.employee{
+    color: "black"
+}

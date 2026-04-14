@@ -1,0 +1,12 @@
+.pill.admin {
+  background-color: red;
+  color: white;
+}
+.pill.manager {
+  background-color: blue;
+  color: white;
+}
+.pill.user {
+  background-color: gray;
+  color: white;
+}
