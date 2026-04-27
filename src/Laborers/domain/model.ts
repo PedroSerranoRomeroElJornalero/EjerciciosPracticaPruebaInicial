@@ -7,3 +7,5 @@ export type Laborer = {
     role:string,
     hireDate:string,
 }
+
+export type EmployeeRole = "admin" | "supervisor" | "user";

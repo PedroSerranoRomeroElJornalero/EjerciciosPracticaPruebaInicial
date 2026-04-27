@@ -1,5 +1,6 @@
 import axios from "axios";
-import { Laborer } from "../models/laborer.model";
+import { Laborer } from "./model";
+
 
 const instance = axios.create({
   baseURL: 'http://localhost:3000/api/',

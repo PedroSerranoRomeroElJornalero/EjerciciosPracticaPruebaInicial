@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Laborer } from "../models/laborer.model";
-import { createLaborer } from "../services/api.services";
-import { TableLaborerEditAndAdd } from "../shared/components/tableLaborerEditAndAdd";
+import { Laborer } from "../domain/model";
+import { LaborerForm } from "../components/LaborerForm";
+import { createLaborer } from "../domain/index";
 
 const initialLaborer: Laborer = {
 	id: "",
@@ -31,15 +31,13 @@ export const LaborerCreate = () => {
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		const payload: Laborer = {
-			...laborer,
-			id: crypto.randomUUID(),
-			hireDate: laborer.hireDate ? new Date(laborer.hireDate).toISOString() : "",
-		};
-
 		try {
 			setSaving(true);
-			const response = await createLaborer(payload);
+			const response = await createLaborer({
+				...laborer,
+				id: crypto.randomUUID(),
+				hireDate: laborer.hireDate ? new Date(laborer.hireDate).toISOString() : "",
+			});
 			navigate(`/laborer-details/${response.id}`);
 		} catch (error) {
 			console.error("Error creating laborer:", error);
@@ -49,7 +47,7 @@ export const LaborerCreate = () => {
 	};
 
 	return (
-		<TableLaborerEditAndAdd
+		<LaborerForm
 			laborer={laborer}
 			saving={saving}
 			onSubmit={handleSubmit}
