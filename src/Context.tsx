@@ -1,5 +1,5 @@
 import { createContext, ReactNode } from 'react';
-import useLaborerData from './services/useLaborerData';
+import { useLaborerData } from './Laborers/hooks/useLaborerData';
 
 export type DataContextType = ReturnType<typeof useLaborerData>;
 

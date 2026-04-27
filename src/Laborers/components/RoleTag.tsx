@@ -1,4 +1,5 @@
-export type EmployeeRole = "admin" | "supervisor" | "user";
+import { EmployeeRole } from "../domain/model";
+import "../../Laborers/styles/LaborersStyles.scss";
 
 const roleConfing : Record<EmployeeRole, {label: string, className: string}> = {
  admin: { label: 'Admin', className: 'admin' },
@@ -6,9 +7,7 @@ const roleConfing : Record<EmployeeRole, {label: string, className: string}> = {
  user: { label: 'User', className: 'user' },
 }
 
-const roleTag = (role: EmployeeRole) => {
+export const RoleTag = (role: EmployeeRole) => {
  const config = roleConfing[role];
  return <span className={`tag ${config.className}`}>{config.label}</span>
 }
-
-export { roleTag };
