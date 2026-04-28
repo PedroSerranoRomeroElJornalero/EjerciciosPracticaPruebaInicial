@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "../../App.scss";
 import { editLaborer, getSelectedLaborer } from "../domain/index";
 import { Laborer } from "../domain/model";
-import { TableLaborerEditAndAdd } from "../components/LaborerForm";
+import { LaborerForm } from "../components/LaborerForm";
 
 export const LaborerEdit = () => {
   const navigate = useNavigate();
@@ -60,7 +60,7 @@ export const LaborerEdit = () => {
   if (!laborer) return <div>Loading...</div>;
 
   return (
-    <TableLaborerEditAndAdd
+    <LaborerForm
       laborer={laborer}
       saving={saving}
       onSubmit={handleSubmit}

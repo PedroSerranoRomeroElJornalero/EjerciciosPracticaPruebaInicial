@@ -11,7 +11,6 @@ export default function TableAllLaborers({ laborers }: { laborers: Laborer[] }) 
 
   return (
     <div className="laborersPage" style={{ "--bg-image": `url(${backgroundImg})` } as React.CSSProperties}>
-      <div className="laborersOverlay" />
       <div className="laborersContent">
         <div className="headerContainer">
           <button className="createLaborer" onClick={() => navigate("/create-laborer")}>
