@@ -27,7 +27,6 @@
 .headerContainer {
   display: flex;
   align-items: center;
-  gap: 20px;
   justify-content: right;
   width: 75%;
   min-width: 800px;
@@ -59,181 +58,11 @@
   &.supervisor { background-color: red; }
 }
 
-.backBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  color: black;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  margin-bottom: 1.5rem;
-
-  &:hover { color: gray; }
-}
-
-.btn {
-  height: 36px;
-  padding: 0 16px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  border: 0.5px solid rgba(0, 0, 0, 0.2);
-  background: transparent;
-  transition: background 0.15s;
-
-  &:hover { background: #f5f5f4; }
-}
-
-.btnPrimary {
-  background: black;
-  color: white;
-  border-color: black;
-
-  &:hover    { opacity: 0.8; }
-  &:disabled { opacity: 0.4; cursor: not-allowed; }
-}
-
-.editLayout {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 2rem;
-  align-items: start;
-}
-
-.formCard {
-  background: white;
-  border: 0.5px solid rgba(0, 0, 0, 0.12);
-  border-radius: 12px;
-  padding: 1.5rem;
-}
-
-.sectionTitle {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #888;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-}
-
-.fieldGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem 1.5rem;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-
-  label {
-    font-size: 12px;
-    font-weight: 500;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  input, select {
-    height: 38px;
-    padding: 0 10px;
-    border: 0.5px solid rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    background: #f9f9f8;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.15s;
-
-    &:focus {
-      border-color: rgba(0, 0, 0, 0.4);
-      background: #f0f0ef;
-    }
-  }
-}
-
-.fieldFull {
-  grid-column: 1 / -1;
-}
-
-.formActions {
-  display: flex;
-  gap: 8px;
-  justify-content: flex-end;
-  margin-top: 1.5rem;
-}
-
-.profileCard {
-  background: white;
-  border: 0.5px solid rgba(0, 0, 0, 0.12);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.profileBanner {
-  height: 72px;
-  background: #E1F5EE;
-}
-
-.profileBody {
-  padding: 0 1.25rem 1.25rem;
-  text-align: center;
-  margin-top: -28px;
-}
-
-.profileAvatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 3px solid white;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 8px;
-}
-
-.profileName {
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 2px;
-}
-
-.profileEmail {
-  font-size: 12px;
-  color: #888;
-  margin-bottom: 10px;
-}
-
-.roleBadge {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 10px;
-  border-radius: 99px;
-  font-size: 12px;
-  font-weight: 500;
-
-  &.role-user       { background: #E1F5EE; color: #085041; }
-  &.role-admin      { background: #FAEEDA; color: #633806; }
-  &.role-supervisor { background: #FAECE7; color: #712B13; }
-}
-
-.detailPage {
-  padding: 1.5rem;
-}
-
 .detailMobileWrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 16px;
   width: 100%;
-  max-width: 460px;
-  margin: 0 auto;
 }
 
 .modernCard {
@@ -335,16 +164,17 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 7px 14px !important;
-  border-radius: 10px !important;
-  border: 1.5px solid #e2e0ff !important;
-  background: #f5f4ff !important;
-  color: #5c4fc7 !important;
-  font-size: 13px !important;
+  padding: 7px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e0ff;
+  background: #f5f4ff;
+  color: #5c4fc7;
+  font-size: 13px;
   font-weight: 600;
+  cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
 
-  &:hover  { background: #e8e6ff !important; border-color: #c4bfff !important; }
+  &:hover  { background: #e8e6ff; border-color: #c4bfff; }
   &:active { transform: scale(0.97); }
 }
 
@@ -427,6 +257,59 @@
   border-radius: 10px;
   border: none;
   background: #1a6b3c;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s;
+
+  &:hover    { opacity: 0.85; }
+  &:disabled { opacity: 0.35; cursor: not-allowed; }
+}
+
+.deleteCard {
+  padding: 32px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.deleteIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fce8e8;
+  color: #b53b3b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+
+.deleteSubtitle {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+  line-height: 1.5;
+
+  strong { color: #333; }
+}
+
+.deleteConfirmBtn {
+  flex: 2;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background: #b53b3b;
   color: white;
   font-size: 14px;
   font-weight: 600;

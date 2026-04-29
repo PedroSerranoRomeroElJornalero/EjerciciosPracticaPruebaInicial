@@ -1,19 +1,23 @@
-import { useNavigate } from "react-router-dom";
 import { EmployeeRole, Laborer } from "../../domain/model";
 import { RoleTag } from "../RoleTag";
 import { Column } from "../../../shared/table/Table";
 import { EyeIcon } from "../../../shared/icons/EyeIcon";
 import { PencilIcon } from "../../../shared/icons/PencilIcon";
+import { TrashIcon } from "../../../shared/icons/TrashIcon";
 
-export const useLaborerColumns = (): Column<Laborer>[] => {
-  const navigate = useNavigate();
+type Props = {
+  onView: (laborer: Laborer) => void;
+  onEdit: (laborer: Laborer) => void;
+  onDelete: (laborer: Laborer) => void;
+};
 
+export const useLaborerColumns = ({ onView, onEdit, onDelete }: Props): Column<Laborer>[] => {
   return [
     {
       header: "Fullname",
       accessor: (laborer) => `${laborer.firstName} ${laborer.lastName}`,
       clickeable: true,
-      onCellClick: (laborer) => navigate(`/laborer-details/${laborer.id}`),
+      onCellClick: (laborer) => onView(laborer),
     },
     {
       header: "Email",
@@ -33,9 +37,10 @@ export const useLaborerColumns = (): Column<Laborer>[] => {
     {
       header: "Actions",
       accessor: (laborer) => (
-        <div style={{ display: "flex", gap: "12px", justifyContent: "left" }}>
-          <EyeIcon onClick={() => navigate(`/laborer-details/${laborer.id}`)} />
-          <PencilIcon onClick={() => navigate(`/edit-laborer/${laborer.id}`)} />
+        <div style={{ display: "flex", gap: "12px" }}>
+          <EyeIcon onClick={() => onView(laborer)} />
+          <PencilIcon onClick={() => onEdit(laborer)} />
+          <TrashIcon onClick={() => onDelete(laborer)} />
         </div>
       ),
     },

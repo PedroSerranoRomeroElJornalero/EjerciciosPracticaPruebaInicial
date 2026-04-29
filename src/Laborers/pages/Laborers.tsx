@@ -21,6 +21,7 @@ export default function Laborers(): ReactElement {
     <>
       <TableAllLaborers
         laborers={laborers}
+        onRefresh={getAllLaborers}
       />
     </>
   );
