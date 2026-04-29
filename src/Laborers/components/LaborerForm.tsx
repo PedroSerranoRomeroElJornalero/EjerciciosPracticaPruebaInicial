@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent } from "react";
 import { Laborer } from "../domain/model";
 import "../../Laborers/styles/LaborersStyles.scss";
 import { ProfileCard } from "../shared/ProfileCard";
+import { Button } from "../../shared/Button/Button";
 
 type Props = {
   laborer: Laborer;
@@ -60,10 +61,8 @@ export const LaborerForm = ({ laborer, saving, onSubmit, onChange, onCancel }: P
           </div>
 
           <div className="modernFormActions">
-            <button className="modernCancelBtn" type="button" onClick={onCancel}>Cancel</button>
-            <button className="modernSaveBtn" type="submit" disabled={saving}>
-              {saving ? "Saving..." : "Save"}
-            </button>
+            <Button label="Save" color="#1a6b3c" type="submit" disabled={saving} />
+            <Button label="Cancel" color="#ccc" onClick={onCancel} />
           </div>
         </form>
       </div>

@@ -20,9 +20,7 @@ export const ProfileCard = ({ laborer }: Props) => {
       </div>
       <p className="modernName">{laborer.firstName} {laborer.lastName}</p>
       <p className="modernEmail">{laborer.email}</p>
-      <span className={`modernBadge role-${laborer.role}`}>
-        {RoleTag(laborer.role as EmployeeRole)}
-      </span>
+      {RoleTag(laborer.role as EmployeeRole)}
     </div>
   );
 };

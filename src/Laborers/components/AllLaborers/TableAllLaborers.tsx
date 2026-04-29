@@ -12,6 +12,7 @@ import { createLaborer, editLaborer } from "../../domain/index";
 import { useModalState } from "../../hooks/useModalsState";
 import { toISODate } from "../../../shared/date/isoDate";
 import { formatDate } from "../../../shared/date/formatDate";
+import { Button } from "../../../shared/Button/Button";
 
 export default function TableAllLaborers({
   laborers,
@@ -57,7 +58,7 @@ export default function TableAllLaborers({
     <div className="laborersPage" style={{ "--bg-image": `url(${backgroundImg})` } as React.CSSProperties}>
       <div className="laborersContent">
         <div className="headerContainer">
-          <button className="createLaborer" onClick={openCreate}>+ Create laborer</button>
+          <Button label="+ Create laborer" color="#1a6b3c" onClick={openCreate} />
         </div>
         <Table data={laborers} columns={columns} keyExtractor={(l) => l.id} />
       </div>

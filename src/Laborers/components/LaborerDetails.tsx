@@ -1,7 +1,7 @@
 import { Laborer } from "../domain/model";
 import "../../Laborers/styles/LaborersStyles.scss";
 import { ProfileCard } from "../shared/ProfileCard";
-import { PencilIcon } from "../../shared/icons/PencilIcon";
+import { Button } from "../../shared/Button/Button";
 
 type Props = {
   laborer: Laborer;
@@ -19,10 +19,7 @@ export const LaborerDetails = ({ laborer, dateOfHire, onEdit }: Props) => {
       <div className="detailCard modernCard">
         <div className="modernCardHeader">
           <span className="modernCardTitle">Details</span>
-          <button className="btn modernEditBtn" onClick={onEdit}>
-            <PencilIcon />
-            Edit
-          </button>
+          <Button label="Edit" color="#abc5cf" onClick={onEdit} />
         </div>
         <div className="modernFields">
           <div className="modernField">

@@ -45,17 +45,20 @@
   &:hover { background-color: gray; }
 }
 
-.tag {
-  display: block;
-  width: 100%;
-  padding: 6px 0;
-  box-sizing: border-box;
-  text-align: center;
-  border-radius: 30px;
+.roleTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 
-  &.user       { background-color: green; }
-  &.admin      { background-color: yellow; }
-  &.supervisor { background-color: red; }
+  &.role-user       { background: #baffe7; color: #085041; }
+  &.role-admin      { background: #ffe5b8; color: #633806; }
+  &.role-supervisor { background: #ffccb9; color: #712B13; }
 }
 
 .detailMobileWrapper {
@@ -229,10 +232,11 @@
 }
 
 .modernFormActions {
-  display: flex;
+  display: grid;
   gap: 10px;
   padding: 16px 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
+
 }
 
 .modernCancelBtn {
