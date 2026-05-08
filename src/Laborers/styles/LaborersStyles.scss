@@ -22,6 +22,12 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .headerContainer {
@@ -70,7 +76,7 @@
 
 .modernCard {
   width: 100%;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 1);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
@@ -182,22 +188,24 @@
 }
 
 .modernFields {
-  padding: 4px 0;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.modernField {
+.modernFieldGroup {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 15px 20px;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .modernFieldLabel {
   font-size: 13px;
-  font-weight: 500;
-  color: #aaa;
-  flex-shrink: 0;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .modernFieldValue {
@@ -208,6 +216,13 @@
   word-break: break-all;
 }
 
+.modernFieldRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
 .modernDivider {
   height: 1px;
   background: rgba(0, 0, 0, 0.05);
@@ -215,28 +230,76 @@
 }
 
 .modernInput {
-  background: transparent;
-  border: none;
+  background: #f8f9fa;
+  border: 1.5px solid #e2e4e8;
+  border-radius: 8px;
   outline: none;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   color: #1a1a1a;
-  text-align: right;
   width: 100%;
-  max-width: 240px;
+  padding: 10px 12px;
   font-family: inherit;
+  transition: all 0.2s ease;
 
-  &::placeholder { color: #ccc; }
-  &[type="date"]  { cursor: pointer; }
-  option          { background: white; }
+  &::placeholder { 
+    color: #999; 
+    font-weight: 400;
+  }
+  
+  &[type="date"] { 
+    cursor: pointer; 
+  }
+  
+  &:hover:not(:disabled) {
+    border-color: #d0d4dc;
+    background: #ffffff;
+  }
+  
+  &:focus {
+    border-color: #1a6b3c;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(26, 107, 60, 0.1);
+  }
+
+  &:disabled {
+    background: #f0f0f0;
+    color: #999;
+    cursor: not-allowed;
+  }
+
+  &.error {
+    border-color: #dc2626;
+    background: rgba(220, 38, 38, 0.05);
+
+    &:focus {
+      border-color: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    }
+  }
+  
+  option { 
+    background: white;
+    color: #1a1a1a;
+  }
+}
+
+.fieldError {
+  display: inline-block;
+  font-size: 12px;
+  color: #dc2626;
+  font-weight: 500;
+  margin-top: 4px;
+  text-align: right;
 }
 
 .modernFormActions {
-  display: grid;
+  display: flex;
   gap: 10px;
   padding: 16px 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
-
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
 .modernCancelBtn {

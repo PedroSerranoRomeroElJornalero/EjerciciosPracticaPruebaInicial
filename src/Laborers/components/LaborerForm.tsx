@@ -1,62 +1,114 @@
-import { ChangeEvent, FormEvent } from "react";
-import { Laborer } from "../domain/model";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LaborerSchema, LaborerFormData } from "../domain/laborerSchema";
 import "../../Laborers/styles/LaborersStyles.scss";
 import { ProfileCard } from "../shared/ProfileCard";
-import { Button } from "../../shared/Button/Button";
+import { Button } from "../../shared/components/Button/Button";
 
 type Props = {
-  laborer: Laborer;
+  laborer: LaborerFormData;
   saving: boolean;
-  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
-  onChange: (field: keyof Laborer) => (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  onSubmit: (data: LaborerFormData) => void;
   onCancel: () => void;
 };
 
-export const LaborerForm = ({ laborer, saving, onSubmit, onChange, onCancel }: Props) => {
+export const LaborerForm = ({ laborer, saving, onSubmit, onCancel }: Props) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm<LaborerFormData>({
+    resolver: zodResolver(LaborerSchema),
+    defaultValues: laborer,
+    mode: "onBlur",
+  });
+
+  const watchedLaborer = watch();
+
   return (
     <div className="detailMobileWrapper">
 
-      <ProfileCard laborer={laborer} />
+      <ProfileCard laborer={watchedLaborer} />
 
       <div className="detailCard modernCard">
         <div className="modernCardHeader">
           <span className="modernCardTitle">Employee information</span>
         </div>
 
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="modernFields">
-            <div className="modernField">
-              <span className="modernFieldLabel">First name</span>
-              <input className="modernInput" value={laborer.firstName} onChange={onChange("firstName")} placeholder="First name" />
+            <div className="modernFieldGroup">
+              <label className="modernFieldLabel">First name</label>
+              <input 
+                className={`modernInput ${errors.firstName ? 'error' : ''}`}
+                placeholder="Enter first name"
+                {...register("firstName")}
+              />
+              {errors.firstName && (
+                <span className="fieldError">{errors.firstName.message}</span>
+              )}
             </div>
-            <div className="modernDivider" />
-            <div className="modernField">
-              <span className="modernFieldLabel">Last name</span>
-              <input className="modernInput" value={laborer.lastName} onChange={onChange("lastName")} placeholder="Last name" />
+
+            <div className="modernFieldGroup">
+              <label className="modernFieldLabel">Last name</label>
+              <input 
+                className={`modernInput ${errors.lastName ? 'error' : ''}`}
+                placeholder="Enter last name"
+                {...register("lastName")}
+              />
+              {errors.lastName && (
+                <span className="fieldError">{errors.lastName.message}</span>
+              )}
             </div>
-            <div className="modernDivider" />
-            <div className="modernField">
-              <span className="modernFieldLabel">Email</span>
-              <input className="modernInput" type="email" value={laborer.email} onChange={onChange("email")} placeholder="email@example.com" />
+
+            <div className="modernFieldGroup">
+              <label className="modernFieldLabel">Email</label>
+              <input 
+                className={`modernInput ${errors.email ? 'error' : ''}`}
+                type="email" 
+                placeholder="your.email@example.com"
+                {...register("email")}
+              />
+              {errors.email && (
+                <span className="fieldError">{errors.email.message}</span>
+              )}
             </div>
-            <div className="modernDivider" />
-            <div className="modernField">
-              <span className="modernFieldLabel">Hire date</span>
-              <input className="modernInput" type="date" value={laborer.hireDate} onChange={onChange("hireDate")} />
+
+            <div className="modernFieldGroup">
+              <label className="modernFieldLabel">Hire date</label>
+              <input 
+                className={`modernInput ${errors.hireDate ? 'error' : ''}`}
+                type="date"
+                {...register("hireDate")}
+              />
+              {errors.hireDate && (
+                <span className="fieldError">{errors.hireDate.message}</span>
+              )}
             </div>
-            <div className="modernDivider" />
-            <div className="modernField">
-              <span className="modernFieldLabel">Role</span>
-              <select className="modernInput" value={laborer.role} onChange={onChange("role")}>
+
+            <div className="modernFieldGroup">
+              <label className="modernFieldLabel">Role</label>
+              <select className={`modernInput ${errors.role ? 'error' : ''}`} {...register("role")}>
                 <option value="user">User</option>
                 <option value="supervisor">Supervisor</option>
                 <option value="admin">Admin</option>
               </select>
+              {errors.role && (
+                <span className="fieldError">{errors.role.message}</span>
+              )}
             </div>
-            <div className="modernDivider" />
-            <div className="modernField">
-              <span className="modernFieldLabel">Picture URL</span>
-              <input className="modernInput" value={laborer.picture} onChange={onChange("picture")} placeholder="https://..." />
+
+            <div className="modernFieldGroup">
+              <label className="modernFieldLabel">Picture URL</label>
+              <input 
+                className={`modernInput ${errors.picture ? 'error' : ''}`}
+                placeholder="https://example.com/image.jpg"
+                {...register("picture")}
+              />
+              {errors.picture && (
+                <span className="fieldError">{errors.picture.message}</span>
+              )}
             </div>
           </div>
 

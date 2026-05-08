@@ -1,5 +1,5 @@
-import { Button } from "../../shared/Button/Button";
-import { TrashIcon } from "../../shared/icons/TrashIcon";
+import { Button } from "../../shared/components/Button/Button";
+import { TrashIcon } from "../../shared/components/icons/TrashIcon";
 import "../styles/LaborersStyles.scss";
 
 type Props = {

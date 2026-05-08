@@ -2,43 +2,35 @@ import { useState } from "react";
 import backgroundImg from "../../../../backend/src/assets/WhiteWallpaper.jpg";
 import "../../styles/LaborersStyles.scss";
 import { useLaborerColumns } from "./AllLaborersColumns";
-import { Table } from "../../../shared/table/Table";
-import { Modal } from "../../../shared/modal/modal";
+import { Table } from "../../../shared/components/table/Table";
+import { Modal } from "../../../shared/components/modal/modal";
 import { LaborerDetails } from "../LaborerDetails";
 import { LaborerForm } from "../LaborerForm";
 import { DeleteLaborer } from "../DeleteLaborer";
-import { Laborer } from "../../domain/model";
-import { createLaborer, editLaborer } from "../../domain/index";
 import { useModalState } from "../../hooks/useModalsState";
 import { toISODate } from "../../../shared/date/isoDate";
 import { formatDate } from "../../../shared/date/formatDate";
-import { Button } from "../../../shared/Button/Button";
+import { Button } from "../../../shared/components/Button/Button";
+import { useLaborers } from "@/Laborers/hooks/useLaborerData";
+import { LaborerFormData } from "@/Laborers/domain/laborerSchema";
 
-export default function TableAllLaborers({
-  laborers,
-  onRefresh,
-}: {
-  laborers: Laborer[];
-  onRefresh: () => Promise<void>;
-}) {
+export default function TableAllLaborers() {
+  const { laborers, create, edit } = useLaborers();
   const {
     modal, formData, close,
     openDetail, openEdit, openCreate, openDelete,
-    handleChange,
   } = useModalState();
 
   const [saving, setSaving] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (data: LaborerFormData) => {
     try {
       setSaving(true);
       if (modal.type === "edit") {
-        await editLaborer({ ...formData, hireDate: toISODate(formData.hireDate) });
+        await edit.mutateAsync({ ...data, hireDate: toISODate(data.hireDate) });
       } else if (modal.type === "create") {
-        await createLaborer({ ...formData, hireDate: toISODate(formData.hireDate) });
+        await create.mutateAsync({ ...data, hireDate: toISODate(data.hireDate) });
       }
-      await onRefresh();
       close();
     } catch (err) {
       console.error(err);
@@ -47,6 +39,9 @@ export default function TableAllLaborers({
     }
   };
 
+  const handleDelete = async () => {
+    close();
+  };
 
   const columns = useLaborerColumns({
     onView: openDetail,
@@ -79,7 +74,6 @@ export default function TableAllLaborers({
             laborer={formData}
             saving={saving}
             onSubmit={handleSubmit}
-            onChange={handleChange}
             onCancel={close}
           />
         )}
@@ -89,7 +83,7 @@ export default function TableAllLaborers({
         {modal.type === "delete" && (
           <DeleteLaborer
             laborerName={`${modal.laborer.firstName} ${modal.laborer.lastName}`}
-            onConfirm={async () => {}}
+            onConfirm={handleDelete}
             onCancel={close}
           />
         )}

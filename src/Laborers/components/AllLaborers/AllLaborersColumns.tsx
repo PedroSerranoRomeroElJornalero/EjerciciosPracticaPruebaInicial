@@ -1,9 +1,9 @@
 import { EmployeeRole, Laborer } from "../../domain/model";
 import { RoleTag } from "../RoleTag";
-import { Column } from "../../../shared/table/Table";
-import { EyeIcon } from "../../../shared/icons/EyeIcon";
-import { PencilIcon } from "../../../shared/icons/PencilIcon";
-import { TrashIcon } from "../../../shared/icons/TrashIcon";
+import { Column } from "../../../shared/components/table/Table";
+import { EyeIcon } from "../../../shared/components/icons/EyeIcon";
+import { PencilIcon } from "../../../shared/components/icons/PencilIcon";
+import { TrashIcon } from "../../../shared/components/icons/TrashIcon";
 
 type Props = {
   onView: (laborer: Laborer) => void;

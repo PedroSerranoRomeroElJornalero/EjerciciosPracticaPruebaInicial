@@ -1,28 +1,22 @@
-//   /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ReactElement, useContext, useEffect } from "react";
+import { ReactElement } from "react";
 import TableAllLaborers from "../components/AllLaborers/TableAllLaborers";
-import { DataContext } from "../../Context";
-import "../../App.scss";
+import backgroundImg from "../../../backend/src/assets/WhiteWallpaper.jpg";
+import "../styles/LaborersStyles.scss";
+import { useLaborers } from "../hooks/useLaborerData";
+import { Skeleton } from "@/shared/components/Ui/Skeleton";
 
 export default function Laborers(): ReactElement {
-  const laborerData = useContext(DataContext);
+  const { isLoading } = useLaborers();
 
-  if (!laborerData) {
-    throw new Error("Laborers must be used inside DataProvider");
+  if (isLoading) {
+    return (
+      <div className="laborersPage" style={{ "--bg-image": `url(${backgroundImg})` } as React.CSSProperties}>
+        <div className="laborersContent">
+          <Skeleton />
+        </div>
+      </div>
+    );
   }
 
-  const { laborers, getAllLaborers } = laborerData;
-
-  useEffect(() => {
-    getAllLaborers();
-  }, [getAllLaborers]);
-
-  return (
-    <>
-      <TableAllLaborers
-        laborers={laborers}
-        onRefresh={getAllLaborers}
-      />
-    </>
-  );
+  return <TableAllLaborers />;
 }

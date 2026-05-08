@@ -1,12 +1,12 @@
 import { createContext, ReactNode } from 'react';
-import { useLaborerData } from './Laborers/hooks/useLaborerData';
+import { useLaborers } from './Laborers/hooks/useLaborerData';
 
-export type DataContextType = ReturnType<typeof useLaborerData>;
+export type DataContextType = ReturnType<typeof useLaborers>;
 
 export const DataContext = createContext<DataContextType | undefined>(undefined);
 
 export const DataProvider = ({ children }: { children: ReactNode }) => {
-  const laborerData = useLaborerData();
+  const laborerData = useLaborers();
 
   return (
     <DataContext.Provider value={laborerData}>

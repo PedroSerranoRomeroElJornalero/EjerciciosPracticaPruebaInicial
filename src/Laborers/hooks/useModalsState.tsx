@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { Laborer } from "../../Laborers/domain/model";
+import { LaborerFormData } from "../domain/laborerSchema";
 
-const emptyLaborer: Laborer = {
+const emptyLaborer: LaborerFormData = {
   id: "",
   firstName: "",
   lastName: "",
@@ -20,7 +22,7 @@ type ModalState =
 
 export const useModalState = () => {
   const [modal, setModal] = useState<ModalState>({ type: "none" });
-  const [formData, setFormData] = useState<Laborer>(emptyLaborer);
+  const [formData, setFormData] = useState<LaborerFormData>(emptyLaborer);
 
   const close = () => setModal({ type: "none" });
 
@@ -28,22 +30,21 @@ export const useModalState = () => {
     setModal({ type: "detail", laborer });
 
   const openEdit = (laborer: Laborer) => {
-    setFormData({ ...laborer, hireDate: laborer.hireDate.split("T")[0] });
+    setFormData({ 
+      ...laborer, 
+      hireDate: laborer.hireDate.split("T")[0],
+      role: laborer.role as "admin" | "supervisor" | "user"
+    });
     setModal({ type: "edit", laborer });
   };
 
   const openCreate = () => {
-    setFormData(emptyLaborer);
+    setFormData({ ...emptyLaborer, id: uuidv4() });
     setModal({ type: "create" });
   };
 
   const openDelete = (laborer: Laborer) =>
     setModal({ type: "delete", laborer });
-
-  const handleChange =
-    (field: keyof Laborer) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
-      setFormData((prev) => ({ ...prev, [field]: e.target.value }));
 
   return {
     modal,
@@ -53,6 +54,5 @@ export const useModalState = () => {
     openEdit,
     openCreate,
     openDelete,
-    handleChange,
   };
 };

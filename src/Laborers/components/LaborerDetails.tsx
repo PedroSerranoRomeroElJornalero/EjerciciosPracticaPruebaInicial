@@ -1,7 +1,7 @@
 import { Laborer } from "../domain/model";
 import "../../Laborers/styles/LaborersStyles.scss";
 import { ProfileCard } from "../shared/ProfileCard";
-import { Button } from "../../shared/Button/Button";
+import { Button } from "../../shared/components/Button/Button";
 
 type Props = {
   laborer: Laborer;
@@ -22,12 +22,12 @@ export const LaborerDetails = ({ laborer, dateOfHire, onEdit }: Props) => {
           <Button label="Edit" color="#abc5cf" onClick={onEdit} />
         </div>
         <div className="modernFields">
-          <div className="modernField">
+          <div className="modernFieldRow">
             <span className="modernFieldLabel">Email</span>
             <span className="modernFieldValue">{laborer.email}</span>
           </div>
           <div className="modernDivider" />
-          <div className="modernField">
+          <div className="modernFieldRow">
             <span className="modernFieldLabel">Hire date</span>
             <span className="modernFieldValue">{dateOfHire}</span>
           </div>
