@@ -1,4 +1,4 @@
-import { EmployeeRole, Laborer } from "../../domain/model";
+import { EmployeeRole, Laborer } from "../../domain/models";
 import { RoleTag } from "../RoleTag";
 import { Column } from "../../../shared/components/table/Table";
 import { EyeIcon } from "../../../shared/components/icons/EyeIcon";

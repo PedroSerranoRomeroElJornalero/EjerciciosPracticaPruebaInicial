@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LaborerSchema, LaborerFormData } from "../domain/laborerSchema";
-import "../../Laborers/styles/LaborersStyles.scss";
-import { ProfileCard } from "../shared/ProfileCard";
-import { Button } from "../../shared/components/Button/Button";
+import { LaborerSchema, LaborerFormData } from "../domain/schemas";
+import "@/Laborers/styles/LaborersStyles.scss";
+import { ProfileCard } from "@/Laborers/shared/ProfileCard";
+import { Button } from "@/shared/components/Button/Button";
+import { FormField } from "../shared/FormField";
 
 type Props = {
   laborer: LaborerFormData;
@@ -38,78 +39,53 @@ export const LaborerForm = ({ laborer, saving, onSubmit, onCancel }: Props) => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="modernFields">
-            <div className="modernFieldGroup">
-              <label className="modernFieldLabel">First name</label>
-              <input 
-                className={`modernInput ${errors.firstName ? 'error' : ''}`}
-                placeholder="Enter first name"
-                {...register("firstName")}
-              />
-              {errors.firstName && (
-                <span className="fieldError">{errors.firstName.message}</span>
-              )}
-            </div>
+            <FormField
+              label="First name"
+              placeholder="Enter first name"
+              registration={register("firstName")}
+              error={errors.firstName}
+            />
 
-            <div className="modernFieldGroup">
-              <label className="modernFieldLabel">Last name</label>
-              <input 
-                className={`modernInput ${errors.lastName ? 'error' : ''}`}
-                placeholder="Enter last name"
-                {...register("lastName")}
-              />
-              {errors.lastName && (
-                <span className="fieldError">{errors.lastName.message}</span>
-              )}
-            </div>
+            <FormField
+              label="Last name"
+              placeholder="Enter last name"
+              registration={register("lastName")}
+              error={errors.lastName}
+            />
 
-            <div className="modernFieldGroup">
-              <label className="modernFieldLabel">Email</label>
-              <input 
-                className={`modernInput ${errors.email ? 'error' : ''}`}
-                type="email" 
-                placeholder="your.email@example.com"
-                {...register("email")}
-              />
-              {errors.email && (
-                <span className="fieldError">{errors.email.message}</span>
-              )}
-            </div>
+            <FormField
+              label="Email"
+              type="email"
+              placeholder="your.email@example.com"
+              registration={register("email")}
+              error={errors.email}
+            />
 
-            <div className="modernFieldGroup">
-              <label className="modernFieldLabel">Hire date</label>
-              <input 
-                className={`modernInput ${errors.hireDate ? 'error' : ''}`}
-                type="date"
-                {...register("hireDate")}
-              />
-              {errors.hireDate && (
-                <span className="fieldError">{errors.hireDate.message}</span>
-              )}
-            </div>
+            <FormField
+              label="Hire date"
+              type="date"
+              registration={register("hireDate")}
+              error={errors.hireDate}
+            />
 
-            <div className="modernFieldGroup">
-              <label className="modernFieldLabel">Role</label>
-              <select className={`modernInput ${errors.role ? 'error' : ''}`} {...register("role")}>
-                <option value="user">User</option>
-                <option value="supervisor">Supervisor</option>
-                <option value="admin">Admin</option>
-              </select>
-              {errors.role && (
-                <span className="fieldError">{errors.role.message}</span>
-              )}
-            </div>
+            <FormField
+              label="Role"
+              type="select"
+              options={[
+                { value: "user", label: "User" },
+                { value: "supervisor", label: "Supervisor" },
+                { value: "admin", label: "Admin" },
+              ]}
+              registration={register("role")}
+              error={errors.role}
+            />
 
-            <div className="modernFieldGroup">
-              <label className="modernFieldLabel">Picture URL</label>
-              <input 
-                className={`modernInput ${errors.picture ? 'error' : ''}`}
-                placeholder="https://example.com/image.jpg"
-                {...register("picture")}
-              />
-              {errors.picture && (
-                <span className="fieldError">{errors.picture.message}</span>
-              )}
-            </div>
+            <FormField
+              label="Picture URL"
+              placeholder="https://example.com/image.jpg"
+              registration={register("picture")}
+              error={errors.picture}
+            />
           </div>
 
           <div className="modernFormActions">

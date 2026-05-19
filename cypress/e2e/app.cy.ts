@@ -1,6 +1,6 @@
 describe('App', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:5173/')
+    cy.visit('http://localhost:5174/')
 
     cy.get('td').should('have.length.above', 1)
   })

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Laborer } from "../../Laborers/domain/model";
-import { LaborerFormData } from "../domain/laborerSchema";
+import { Laborer } from "../domain/models";
+import { LaborerFormData } from "../domain/schemas";
 
 const emptyLaborer: LaborerFormData = {
   id: "",

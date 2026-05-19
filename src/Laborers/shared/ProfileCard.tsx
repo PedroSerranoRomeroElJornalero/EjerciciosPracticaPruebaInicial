@@ -1,4 +1,4 @@
-import { EmployeeRole, Laborer } from "../domain/model";
+import { EmployeeRole, Laborer } from "../domain/models";
 import "../../Laborers/styles/LaborersStyles.scss";
 import { RoleTag } from "../components/RoleTag";
 

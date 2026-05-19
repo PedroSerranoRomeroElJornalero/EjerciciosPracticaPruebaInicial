@@ -6,7 +6,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       return config
     },
-    baseUrl: `http://localhost:5173`,
+    baseUrl: `http://localhost:5174`,
     viewportWidth: 1440,
     viewportHeight: 1080,
   },

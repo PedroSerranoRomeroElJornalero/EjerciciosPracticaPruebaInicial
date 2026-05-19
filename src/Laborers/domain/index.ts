@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Laborer } from "./model";
+import { Laborer } from "./models";
 
 
 const instance = axios.create({

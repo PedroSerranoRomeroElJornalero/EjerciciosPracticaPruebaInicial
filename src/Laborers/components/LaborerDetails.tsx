@@ -1,4 +1,4 @@
-import { Laborer } from "../domain/model";
+import { Laborer } from "../domain/models";
 import "../../Laborers/styles/LaborersStyles.scss";
 import { ProfileCard } from "../shared/ProfileCard";
 import { Button } from "../../shared/components/Button/Button";

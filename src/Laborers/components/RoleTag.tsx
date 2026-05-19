@@ -1,4 +1,4 @@
-import { EmployeeRole } from "../domain/model";
+import { EmployeeRole } from "../domain/models";
 import "../../Laborers/styles/LaborersStyles.scss";
 
 const roleConfig: Record<EmployeeRole, { label: string; className: string }> = {

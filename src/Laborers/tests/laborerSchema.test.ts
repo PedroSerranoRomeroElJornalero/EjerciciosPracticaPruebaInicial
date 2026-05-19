@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { LaborerSchema } from '../domain/laborerSchema';
+import { LaborerSchema } from '../domain/schemas';
 
 describe('LaborerSchema Validation', () => {
   const validLaborer = {
@@ -32,7 +32,7 @@ describe('LaborerSchema Validation', () => {
   it('should reject invalid role', () => {
     const invalidLaborer = {
       ...validLaborer,
-      role: 'invalid-role' as any,
+      role: 'invalid-role' as string,
     };
     const result = LaborerSchema.safeParse(invalidLaborer);
     expect(result.success).toBe(false);

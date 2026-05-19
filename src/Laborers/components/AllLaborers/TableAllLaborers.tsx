@@ -12,7 +12,7 @@ import { toISODate } from "../../../shared/date/isoDate";
 import { formatDate } from "../../../shared/date/formatDate";
 import { Button } from "../../../shared/components/Button/Button";
 import { useLaborers } from "@/Laborers/hooks/useLaborerData";
-import { LaborerFormData } from "@/Laborers/domain/laborerSchema";
+import { LaborerFormData } from "@/Laborers/domain/schemas";
 
 export default function TableAllLaborers() {
   const { laborers, create, edit } = useLaborers();
